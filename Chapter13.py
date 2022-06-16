@@ -62,6 +62,7 @@ for i in range(n*m):
       print(x1,y1,"+++",x2,y2,"+++",x3,y3)
 """    
 
+print("17. 경쟁적 전염")
 
 
 

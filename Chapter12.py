@@ -152,11 +152,94 @@ for _ in range(l):
     break
 print(answer)
 """
+"""
 print("12. 기둥과 보 설치")
 
+def des_check(x,y,a,n,bp):
+    if a==0:
+        #기둥
+        if y==n:
+            return True
+        if bp[y+1][x]!=2 or bp[y+1][x-1]%2==1:
+            return False
+        
+    else:
+        #보
+        if y==n:
+            return True
+        if bp[y][x+1]!=2 or bp[y][x-1]%2==1:
+            return False
+        
 
+def solution(n, build_frame):
+    answer = []
+    bp=[[2]*(n+1) for _ in range(n+1)]
+    for order in build_frame:
+        x,y,a,b=order
+        print(x,y,a,b)
+        if b==0:
+            if des_check(x,y,a,n,bp):
+                bp[y][x]=2
+            continue
+        if con_check(x,y,a,n,bp):
+            
+        if a==0:
+            bp[y][x]=a
+        else:
+            bp[y][x]=a
+            
+            
+            
+            
+    #출력
+    for i in bp:
+        print(i)
+    for i in range(n+1):
+        for j in range(n+1):
+            if bp[j][i]!=2:
+                if bp[j][i]==3:
+                    answer.append([i,j,0])
+                    answer.append([i,j,1])
+                    continue
+                answer.append([i,j,bp[j][i]])
+    return answer
+  
+"""
+def possible(answer):
+    for x,y,stuff in answer:
+        if stuff==0:
+            if y==0 or [x-1,y,1] in answer or [x,y,1] in answer or [x,y-1,0] in answer:
+                continue
+            return False
+        elif stuff==1:
+            if[x,y-1,0]in answer or [x+1,y-1,0] in answer or ([x-1,y,1] in answer and [x+1,y,1] in answer):
+                continue
+            return False
+    return True
 
+def solution(n,build_frame):
+    answer=[]
+    for frame in build_frame:
+        x,y,stuff,operate=frame
+        if operate==0:
+            answer.remove([x,y,stuff])
+            if not possible(answer):
+                answer.append([x,y,stuff])
+        if operate==1:
+            answer.append([x,y,stuff])
+            if not possible(answer):
+                answer.remove([x,y,stuff])
+              
+    return sorted(answer)
+            
+  
+print(solution(5,[[1, 0, 0, 1], [1, 1, 1, 1], [2, 1, 0, 1], [2, 2, 1, 1], [5, 0, 0, 1], [5, 1, 0, 1], [4, 2, 1, 1], [3, 2, 1, 1]]))
 
+            
+            
+            
+            
+    
 
 
 
