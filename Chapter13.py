@@ -64,6 +64,37 @@ for i in range(n*m):
 
 print("17. 경쟁적 전염")
 
+dx=[0,0,1,-1]
+dy=[-1,1,0,0]
+
+def dfs(x,y,num):
+  graph2[y][x]=num
+  for i in range(4):
+    nx=x+dx[i]
+    ny=y+dy[i]
+    if nx<0 or ny<0 or nx>=n or ny>=n:
+      continue
+    if graph2[ny][nx]!=0:
+      continue
+    graph2[ny][nx]=num
+
+n,k=map(int,input().split())
+graph=[]
+for i in range(n):
+  graph.append(list(map(int,input().split())))
+s,ansx,ansy=map(int,input().split())
+
+
+for _ in range(s):
+  graph2=[[0]*n for _ in range(n)]
+  for num in range(1,k+1):
+    for i in range(n):
+      for j in range(n):
+        if graph[j][i]==num:
+          dfs(i,j,num)
+  graph=graph2[:]
+
+print(graph[ansy-1][ansx-1])
 
 
 
