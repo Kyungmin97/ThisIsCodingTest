@@ -30,8 +30,42 @@ def binary_search(start,end,target):
     
 print(binary_search(0,n,x))
 """
+"""
+print("28. 고정점 찾기")
+
+#O(N)?
+n=int(input())
+cnt=0
+for i in map(int,input().split()):
+  if cnt==i:
+    print(i)
+    exit()
+  cnt+=1
+print(-1)
+
+#O(logN)
+def search(min,max):
+  mid=(min+max)//2
+  print(min,mid,max)
+  if min>max:
+    return -1
+    
+
+  if mid>nlist[mid]:
+    return search(mid+1,max)
+  elif mid<nlist[mid]:
+    return search(min,mid-1)
+  elif mid==nlist[mid]:
+    return mid
 
 
+n=int(input())
+nlist=list(map(int,input().split()))
+print(search(0,n-1))
+"""
+
+  
+  
 
 
 
