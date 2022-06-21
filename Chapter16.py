@@ -47,52 +47,22 @@ for _ in range(t):
   
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 """
+print("32. 정수 삼각형")
+
+n=int(input())
+dp=[0]*n
+now=[0]*n
+
+for i in range(n):
+  nlist=list(map(int,input().split()))
+  for j in range(len(nlist)):
+    if j==0:
+      now[j]=dp[j]+nlist[j]
+    elif j==len(nlist):
+      now[j]=dp[j-1]+nlist[j]
+    else:
+      now[j]=max(dp[j-1],dp[j])+nlist[j]
+  dp=now[:]
+      
+print(max(dp))
